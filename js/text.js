@@ -18,11 +18,35 @@ xhr.onload = function() {
     var teddies = xhr.response;
   }
 
-/////////// Afficher les éléments sur la page//////////////////////
+/////////// Création du DOM//////////////////////
 
-function teddies() {
-    let teddy = document.createElement('h1');
-    teddy.innerHTML = jsonObj['name'];
+function teddies (id, name, price, description, imageUrl){ // les attributs de chaque peluche
+
+  // creation des éléments du DOM
+
+  let div = document.createElement("div");
+  let a = document.createElement("a");
+  let img = document.createElement("img");
+  let url = "http://localhost:3000/images/teddy_1.jpg";
+  let span = document.createElement("span")
+
+  let spanContent = document.createTextNode("Norbert");
+
+  img.setAttribute("src", url);
+	img.setAttribute("alt", "Ours en peluche");
+  a.setAttribute("href", url);
+  a.setAttribute("target", "_blank");
+
+
+  div.appendChild(a);
+  a.appendChild(img);
+  a.appendChild(span);
   
-    
-  }
+  div.classList.add("teddy");
+  
+  let getDiv = document.querySelector(id);
+	getDiv.appendChild(div);
+
+  block("#teddies");
+};
+
