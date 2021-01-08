@@ -1,5 +1,5 @@
 /////////// Recupération des données//////////////////////
-xhr = new XMLHttpRequest();
+/*xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function (){
     console.log(this);
 
@@ -16,11 +16,24 @@ xhr.send();
 
 xhr.onload = function() {
     var teddies = xhr.response;
-  }
+  } */
+
+// Une fonction async permet d'attendre la fin des promesses avant de continuer 
+
+async function getTeddies() {
+  const teddies = await fetch('http://localhost:3000/api/teddies/')
+      .then((response) => response.json());
+
+  console.log(teddies);
+  // On recupère l'element de la page web <div id='teddies'></div>
+  const teddiesElement = document.getElementById('teddies');
+  
+}
+getTeddies();
 
 /////////// Création du DOM//////////////////////
 
-function teddies (id, name, price, description, imageUrl){ // les attributs de chaque peluche
+function teddy (id, name, price, description, imageUrl){ // les attributs de chaque peluche
 
   // creation des éléments du DOM
 
@@ -44,9 +57,10 @@ function teddies (id, name, price, description, imageUrl){ // les attributs de c
   
   div.classList.add("teddy");
   
-  let getDiv = document.querySelector(id);
+  let getDiv = document.querySelector('#teddies');
 	getDiv.appendChild(div);
 
   block("#teddies");
 };
+
 
