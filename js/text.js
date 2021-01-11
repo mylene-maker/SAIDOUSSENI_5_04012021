@@ -18,49 +18,41 @@ xhr.onload = function() {
     var teddies = xhr.response;
   } */
 
-// Une fonction async permet d'attendre la fin des promesses avant de continuer 
 
-async function getTeddies() {
-  const teddies = await fetch('http://localhost:3000/api/teddies/')
-      .then((response) => response.json());
+   fetch('http://localhost:3000/api/teddies/')
+      .then((response) => response.json())
+      .then(function(data){
+        console.log(data)
+        let teddies = data
 
-  console.log(teddies);
-  // On recupère l'element de la page web <div id='teddies'></div>
-  const teddiesElement = document.getElementById('teddies');
+        ////////Création des éléments du DOM
+
+        for (i=0; i < 5; i++){
+          const teddiesElement = document.getElementById('teddies');
+
+          let div = document.createElement('div')
+          div.setAttribute("class","col-lg-6 mb-4")
+
+          let span = document.createElement('span')
+          span.setAttribute("class", "card h-100")
+
+          let img = document.createElement('img')
+          img.setAttribute("src", "JWDP5/images/teddy_1.jpg")
+          img.setAttribute("alt", "Ours en peulche Marron")
+
+          let paragraph = document.createElement('p')
+          paragraph.setAttribute("class", "card-text")
+          paragraph.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      
+          div.appendChild(span)
+          span.appendChild(img)
+          span.appendChild(paragraph)
+          teddiesElement.appendChild(div)
+        }
+        
+      });
+      
   
-}
-getTeddies();
+  
 
 /////////// Création du DOM//////////////////////
-
-function teddy (id, name, price, description, imageUrl){ // les attributs de chaque peluche
-
-  // creation des éléments du DOM
-
-  let div = document.createElement("div");
-  let a = document.createElement("a");
-  let img = document.createElement("img");
-  let url = "http://localhost:3000/images/teddy_1.jpg";
-  let span = document.createElement("span")
-
-  let spanContent = document.createTextNode("Norbert");
-
-  img.setAttribute("src", url);
-	img.setAttribute("alt", "Ours en peluche");
-  a.setAttribute("href", url);
-  a.setAttribute("target", "_blank");
-
-
-  div.appendChild(a);
-  a.appendChild(img);
-  a.appendChild(span);
-  
-  div.classList.add("teddy");
-  
-  let getDiv = document.querySelector('#teddies');
-	getDiv.appendChild(div);
-
-  block("#teddies");
-};
-
-
