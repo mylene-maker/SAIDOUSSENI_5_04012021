@@ -1,12 +1,25 @@
 .masthead {
-    height: 100vh;
-    min-height: 500px;
-    background-image: url('https://source.unsplash.com/BtbjCFUvBXs/1920x1080');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+  height: 100vh;
+  min-height: 500px;
+  background-image: url("https://source.unsplash.com/BtbjCFUvBXs/1920x1080");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  header{
-      margin-bottom: 100px;
-  }
+header {
+  margin-bottom: 100px;
+}
+
+main img {
+  height: 300px;
+}
+
+main a {
+  color: black;
+}
+
+nav {
+  background-color: #f3e9f1;
+}
+/*# sourceMappingURL=style.css.map */

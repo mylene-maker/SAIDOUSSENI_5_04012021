@@ -25,9 +25,9 @@ xhr.onload = function() {
         console.log(data)
         let teddies = data
 
-        ////////Création des éléments du DOM
+        ////////Création des éléments du DOM avec une boucle pour l'affichage des 5 produits
 
-        for (i=0; i < 5; i++){
+        for (i=1; i < 6; i++){
           const teddiesElement = document.getElementById('teddies');
 
           let div = document.createElement('div')
@@ -36,23 +36,24 @@ xhr.onload = function() {
           let span = document.createElement('span')
           span.setAttribute("class", "card h-100")
 
+          let a = document.createElement('a')
+          a.setAttribute("href", "produit.html")
+
           let img = document.createElement('img')
-          img.setAttribute("src", "JWDP5/images/teddy_1.jpg")
-          img.setAttribute("alt", "Ours en peulche Marron")
+          img.setAttribute("src", "JWDP5/images/teddy_" + i + ".jpg")
+          img.setAttribute("alt", "Ours en peulche")
 
           let paragraph = document.createElement('p')
           paragraph.setAttribute("class", "card-text")
           paragraph.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-      
-          div.appendChild(span)
+          
+          div.appendChild(a)
+          a.appendChild(span)
           span.appendChild(img)
           span.appendChild(paragraph)
           teddiesElement.appendChild(div)
-        }
-        
-      });
-      
-  
-  
 
-/////////// Création du DOM//////////////////////
+        }
+
+      });
+
