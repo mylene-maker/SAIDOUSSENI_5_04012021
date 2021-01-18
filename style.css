@@ -22,4 +22,9 @@ main a {
 nav {
   background-color: #f3e9f1;
 }
+
+input {
+  width: 100%;
+  border: 1px solid;
+}
 /*# sourceMappingURL=style.css.map */
