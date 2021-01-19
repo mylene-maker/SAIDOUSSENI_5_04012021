@@ -1,5 +1,3 @@
-/////////// Recupération des données//////////////////////
-
   //////////// Récupéretaionn des données avec fetch
  
 fetch('http://localhost:3000/api/teddies/')
@@ -11,7 +9,7 @@ fetch('http://localhost:3000/api/teddies/')
         ////////Création des éléments du DOM avec une boucle pour l'affichage des 5 produits
 
           return teddies.map(function(teddy){
-            const teddiesElement = document.getElementById('teddies');
+          const teddiesElement = document.getElementById('teddies');
 
           let div = document.createElement('div')
           div.setAttribute("class","col-lg-6 mb-4")
