@@ -26,5 +26,14 @@ nav{
 
   input{
     width: 100%;
-    border: 1px solid
+    border: 1px solid;
   }
+
+.price{
+  border: hidden;
+  background-color: rgb(243, 233, 241);
+  width: auto;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+}

@@ -27,4 +27,13 @@ input {
   width: 100%;
   border: 1px solid;
 }
+
+.price {
+  border: hidden;
+  background-color: #f3e9f1;
+  width: auto;
+  padding: 20px;
+  text-align: center;
+  font-weight: bold;
+}
 /*# sourceMappingURL=style.css.map */

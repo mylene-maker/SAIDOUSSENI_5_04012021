@@ -21,6 +21,7 @@ fetch(`${apiUrl}${productId}`)
   title.innerHTML= teddies.name 
 
   let price = document.createElement('p')
+  price.setAttribute('class', 'price')
   price.innerHTML = teddies.price/100 + '€'
 
   let div = document.createElement('div')
@@ -47,10 +48,31 @@ fetch(`${apiUrl}${productId}`)
   colors.setAttribute('class', 'my-3')
   colors.innerHTML = 'Personnalisez votre article'
 
+   
+  let colorsChoice = document.createElement('ul')
+  let choice = document.createElement('li')
+  choice.innerHTML = teddies.colors[0]
+  let choice_1 = document.createElement('li')
+  choice_1.innerHTML = teddies.colors[1]
+  let choice_2 = document.createElement('li')
+  choice_2.innerHTML = teddies.colors[2]
+  /// Boutton commander   
+  let button = document.createElement('button')
+  button.innerHTML = 'Commander'
+  button.setAttribute('class', 'btn btn-dark')
+  button.setAttribute('id', 'add-to-cart')
+
+  //// evenement au click - Ajouter l'article au panier
+
+  button.addEventListener('click', function(){
+      button.innerHTML = 'Ajouté au panier !'
+      
+  })
+  
 
   teddy.appendChild(container)
   container.appendChild(title)
-  title.appendChild(price)
+  divDesc.appendChild(price)
   container.appendChild(div)
   div.appendChild(divImg)
   divImg.appendChild(img)
@@ -58,7 +80,11 @@ fetch(`${apiUrl}${productId}`)
   divDesc.appendChild(description)
   divDesc.appendChild(p)
   divDesc.appendChild(colors)
-
+  divDesc.appendChild(colorsChoice)
+  colorsChoice.appendChild(choice)
+  colorsChoice.appendChild(choice_1)
+  colorsChoice.appendChild(choice_2)
+  divDesc.appendChild(button)
 })
 
 
