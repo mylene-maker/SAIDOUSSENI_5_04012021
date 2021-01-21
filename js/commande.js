@@ -1,3 +1,4 @@
+
 let confirmation = document.getElementById('confirmation')
 
 let message = document.createElement('p')
@@ -10,8 +11,9 @@ icon.setAttribute('class', 'fas fa-check-square')
 let button = document.createElement('a')
 button.setAttribute('class', 'btn btn-primary')
 button.setAttribute('href', 'index.html')
-button.innerHTML = 'Ok'
+button.innerHTML = 'Revenir à la page Accueil'
 
 confirmation.appendChild(icon)
 confirmation.appendChild(message)
 confirmation.appendChild(button)
+

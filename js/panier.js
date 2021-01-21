@@ -1,23 +1,36 @@
-////////////Creation du formulaire 
+fetch('http://localhost:3000/api/teddies/')
+.then((response) => response.json())
+.then(function(data){
+  console.log(data)
+  let teddies = data
+
+////Tableau de presentation du panier 
+
+let tableau = document.createElement('table')
+tableau.setAttribute('class', 'table')
+let thead = document.createElement('thead')
+thead.setAttribute('class', 'font-weight-bold')
+thead.innerHTML = 'Recapitulatif de votre commande'
+let ligne_1 = document.createElement('tr')
+let colone_1 = document.createElement('th')
+colone_1.innerHTML = 'Article'
+let colone_2 = document.createElement('th')
+colone_2.innerHTML = 'Nom'
+let colone_3 = document.createElement('th')
+colone_3.innerHTML = 'Prix'
+let tbody = document.createElement('tbody')
+tbody.setAttribute('id', 'cart-tablebody')
+let subtotal = document.createElement('p')
+subtotal.innerHTML = 'Sous total :' 
+let span = document.createElement('p')
+span.setAttribute('class', 'subtotal')
+
+////////////Formulaire de commande
 
 const formulaire = document.getElementById('formulaire')
 
 let form = document.createElement('form')
 form.setAttribute('class', 'form')
-
-/*let divSexe = document.createElement('div')
-divSexe.setAttribute('class', 'form-group')
-let sexe = document.createElement('label')
-sexe.innerHTML = 'Civilité'
-sexe.setAttribute('for', 'sexe')
-let inputSexeF = document.createElement('input')
-inputSexeF.setAttribute('id', 'sexe')
-inputSexeF.setAttribute('type', 'checkbox')
-inputSexeF.setAttribute('required', '')
-let inputSexeM = document.createElement('input')
-inputSexeM.setAttribute('id', 'sexe')
-inputSexeM.setAttribute('type', 'checkbox') */
-
 
 let divFirstName = document.createElement('div')
 divFirstName.setAttribute('class', 'form-group')
@@ -74,19 +87,25 @@ inputMail.setAttribute('type', 'email')
 inputMail.setAttribute('required', '')
 inputMail.setAttribute('placeholder', 'monadress@mail.fr')
 
+//// Boutton validation commande 
 let button = document.createElement('button')
-button.innerHTML = 'Envoyer'
+button.innerHTML = 'Valider la commande'
 button.setAttribute('type', 'submit')
 button.setAttribute('class', 'btn btn-primary')
+button.setAttribute('id', 'confirm-command')
+
+
+formulaire.appendChild(tableau)
+tableau.appendChild(thead)
+thead.appendChild(ligne_1)
+ligne_1.appendChild(colone_1)
+ligne_1.appendChild(colone_2)
+ligne_1.appendChild(colone_3)
+tableau.appendChild(tbody)
+tableau.appendChild(subtotal)
+subtotal.appendChild(span)
 
 formulaire.appendChild(form)
-
-/*form.appendChild(divSexe)
-divSexe.appendChild(sexe)
-divSexe.appendChild(inputSexeF)
-divSexe.appendChild(inputSexeM) */
-
-
 form.appendChild(divFirstName)
 divFirstName.appendChild(firstName)
 divFirstName.appendChild(inputFirstName)
@@ -110,11 +129,4 @@ divMail.appendChild(inputMail)
 form.appendChild(button)
 
 
-
-
-
-
-
-
-
-
+})

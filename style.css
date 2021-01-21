@@ -36,4 +36,19 @@ input {
   text-align: center;
   font-weight: bold;
 }
+
+select {
+  width: 100%;
+}
+
+.list-inline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #f3e9f1;
+  padding: 10px;
+}
 /*# sourceMappingURL=style.css.map */

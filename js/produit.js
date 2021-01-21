@@ -22,7 +22,7 @@ fetch(`${apiUrl}${productId}`)
 
   let price = document.createElement('p')
   price.setAttribute('class', 'price')
-  price.innerHTML = teddies.price/100 + '€'
+  price.innerHTML = teddies.price/100 + ',00' + '€'
 
   let div = document.createElement('div')
   div.setAttribute('class', 'row')
@@ -49,26 +49,37 @@ fetch(`${apiUrl}${productId}`)
   colors.innerHTML = 'Personnalisez votre article'
 
    
-  let colorsChoice = document.createElement('ul')
-  let choice = document.createElement('li')
+  let colorsChoice = document.createElement('select')
+  let choice = document.createElement('option')
   choice.innerHTML = teddies.colors[0]
-  let choice_1 = document.createElement('li')
+  let choice_1 = document.createElement('option')
   choice_1.innerHTML = teddies.colors[1]
-  let choice_2 = document.createElement('li')
+  let choice_2 = document.createElement('option')
   choice_2.innerHTML = teddies.colors[2]
-  /// Boutton commander   
+  
+  /// Boutton ajouter un article au panier  
   let button = document.createElement('button')
   button.innerHTML = 'Commander'
-  button.setAttribute('class', 'btn btn-dark')
-  button.setAttribute('id', 'add-to-cart')
+  button.setAttribute('class', 'btn btn-dark add-to-cart')
+  button.setAttribute('data-id', 'teddies._id')
+  button.setAttribute('data-name', 'teddies.name')
+  button.setAttribute('data-price', 'teddies.price')
+  button.setAttribute('type', 'submit')
 
-  //// evenement au click - Ajouter l'article au panier
+  //// click boutton ajouter au panier
 
   button.addEventListener('click', function(){
-      button.innerHTML = 'Ajouté au panier !'
-      
-  })
+    button.innerHTML = 'Ajouté au panier !' 
+    
+    ////recuperer les infos du produit  ///// Sauvegarde des donnees avec sessionStorage
   
+    let id = sessionStorage.setItem('article', teddies._id)
+    let name = sessionStorage.setItem('nom', teddies.name)
+    let price = sessionStorage.setItem('prix', teddies.price) 
+    console.log(sessionStorage)
+  
+  })
+ 
 
   teddy.appendChild(container)
   container.appendChild(title)

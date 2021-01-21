@@ -37,3 +37,12 @@ nav{
   text-align: center;
   font-weight: bold;
 }
+select{
+  width: 100%;
+}
+.list-inline{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(243, 233, 241);
+  padding: 10px; 
+}
