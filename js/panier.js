@@ -1,8 +1,10 @@
-fetch('http://localhost:3000/api/teddies/')
-.then((response) => response.json())
-.then(function(data){
-  console.log(data)
-  let teddies = data
+///// Recuperer le localStorage
+let panier = JSON.parse(localStorage.getItem('monPanier'))
+console.log(localStorage)
+
+panier.map(function(element){
+    
+})
 
 ////Tableau de presentation du panier 
 
@@ -21,7 +23,7 @@ colone_3.innerHTML = 'Prix'
 let tbody = document.createElement('tbody')
 tbody.setAttribute('id', 'cart-tablebody')
 let subtotal = document.createElement('p')
-subtotal.innerHTML = 'Sous total :' 
+subtotal.innerHTML = 'Total :' 
 let span = document.createElement('p')
 span.setAttribute('class', 'subtotal')
 
@@ -127,6 +129,3 @@ divMail.appendChild(mail)
 divMail.appendChild(inputMail)
 
 form.appendChild(button)
-
-
-})

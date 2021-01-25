@@ -20,8 +20,15 @@ fetch('http://localhost:3000/api/teddies/')
           let a = document.createElement('a')
           a.setAttribute("href", "produit.html?id=" + teddy._id)
 
+          let title_price = document.createElement('div')
+          title_price.setAttribute('class', 'title_price')
+
           let title = document.createElement('h4')
           title.innerHTML = teddy.name
+
+          let price = document.createElement('p')
+          price.innerHTML = teddy.price/100 + '.00 €'
+          price.setAttribute('class', 'font-weight-bold')
 
           let img = document.createElement('img')
           img.setAttribute("src",  teddy.imageUrl ) 
@@ -33,10 +40,13 @@ fetch('http://localhost:3000/api/teddies/')
           
           div.appendChild(a)
           a.appendChild(span)
+          span.appendChild(title_price)
+          title_price.appendChild(title)
           span.appendChild(img)
-          span.appendChild(title)
+          title_price.appendChild(price)
           span.appendChild(paragraph)
           teddiesElement.appendChild(div)
+          
           })
       });
 

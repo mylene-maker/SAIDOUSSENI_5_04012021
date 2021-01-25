@@ -4,6 +4,19 @@ let productId
 productId = new URL(window.location.href).searchParams.get('id')
 let apiUrl = 'http://localhost:3000/api/teddies/'
 
+///Creation du panier avec localStorage
+let panier = JSON.parse(localStorage.getItem('monPanier'))
+
+if(localStorage.getItem('monPanier')){
+  console.log('le panier est ok')
+  console.log(localStorage.getItem('monPanier'))
+  
+} else{
+  console.log('creation du panier')
+  let init = []
+  localStorage.setItem('monPanier', (JSON.stringify(init)))
+} 
+
 //L'ajouter a l'url du fetch
 fetch(`${apiUrl}${productId}`)
 .then((response) => response.json())
@@ -57,29 +70,24 @@ fetch(`${apiUrl}${productId}`)
   let choice_2 = document.createElement('option')
   choice_2.innerHTML = teddies.colors[2]
   
-  /// Boutton ajouter un article au panier  
-  let button = document.createElement('button')
-  button.innerHTML = 'Commander'
-  button.setAttribute('class', 'btn btn-dark add-to-cart')
-  button.setAttribute('data-id', 'teddies._id')
-  button.setAttribute('data-name', 'teddies.name')
-  button.setAttribute('data-price', 'teddies.price')
-  button.setAttribute('type', 'submit')
+  /// Ajout des article au panier
 
-  //// click boutton ajouter au panier
+function addCart(){
 
-  button.addEventListener('click', function(){
-    button.innerHTML = 'Ajouté au panier !' 
-    
-    ////recuperer les infos du produit  ///// Sauvegarde des donnees avec sessionStorage
-  
-    let id = sessionStorage.setItem('article', teddies._id)
-    let name = sessionStorage.setItem('nom', teddies.name)
-    let price = sessionStorage.setItem('prix', teddies.price) 
-    console.log(sessionStorage)
-  
+  const getButton = document.getElementById("add-basket");
+
+  console.log(getButton)
+  getButton.addEventListener("click", async function(){
+    panier.push(teddies)
+    localStorage.setItem('monPanier', JSON.stringify(panier))
+
+/// ajouter une alert pour prevenir que le produit est ajouter
+
+    alert('Le produit à bien été ajouter dans votre panier!')
+/// Recharge la page
+    location.reload()
   })
- 
+} addCart()
 
   teddy.appendChild(container)
   container.appendChild(title)
@@ -95,10 +103,7 @@ fetch(`${apiUrl}${productId}`)
   colorsChoice.appendChild(choice)
   colorsChoice.appendChild(choice_1)
   colorsChoice.appendChild(choice_2)
-  divDesc.appendChild(button)
 })
 
-
-// le panier se fera avec le cession storage - local storage   
 
 
