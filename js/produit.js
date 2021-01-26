@@ -10,12 +10,11 @@ let panier = JSON.parse(localStorage.getItem('monPanier'))
 if(localStorage.getItem('monPanier')){
   console.log('le panier est ok')
   console.log(localStorage.getItem('monPanier'))
-  
 } else{
   console.log('creation du panier')
   let init = []
   localStorage.setItem('monPanier', (JSON.stringify(init)))
-} 
+}
 
 //L'ajouter a l'url du fetch
 fetch(`${apiUrl}${productId}`)
@@ -23,6 +22,7 @@ fetch(`${apiUrl}${productId}`)
 .then(function(data){
   console.log(data)
   let teddies = data
+
 ////elements du DOM
   const teddy = document.getElementById('teddy')
 
@@ -71,7 +71,6 @@ fetch(`${apiUrl}${productId}`)
   choice_2.innerHTML = teddies.colors[2]
   
   /// Ajout des article au panier
-
 function addCart(){
 
   const getButton = document.getElementById("add-basket");

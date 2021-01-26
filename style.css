@@ -65,4 +65,17 @@ select {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+
+.basket {
+  width: 100%;
+  margin-left: 45px;
+}
+
+h4 {
+  text-align: center;
+}
+
+table {
+  margin-bottom: 50px;
+}
 /*# sourceMappingURL=style.css.map */

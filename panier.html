@@ -36,8 +36,46 @@
       </nav>
     </header>
       <main>
-        
-        <div class="container" id="formulaire"></div>
+        <h4>Votre panier contient les articles suivants :</h4>
+
+        <table class="basket">
+          <thead>
+            <tr>
+              <th>Reference</th>
+              <th>Nom</th>
+              <th>Prix</th>
+            </tr>  
+          </thead>
+          <tbody id="basket-element">
+            
+          </tbody>
+        </table>
+        <div class="container" id="formulaire">
+          <form method="post">
+            <label for="nom">Votre Nom de famille</label>
+            <input type="text" name="nom" id="nom" required placeholder="DUPOND">
+            <span id="missNom"></span>
+
+            <label for="prenom">Votre prénom</label>
+            <input type="text" name="prenom" id="prenom" required placeholder="Julien">
+            <span id="missPrenom"></span>
+
+
+            <label for="adresse">Votre Adresse</label>
+            <input type="text" name="adresse" id="adresse" required placeholder="102 rue de l'est">
+            <span id="missAdresse"></span>
+
+            <label for="ville">Votre Ville et Code Postal</label>
+            <input type="text" name="ville" id="ville" required placeholder="CHERBOURG - 97000"> 
+            <span id="missVille"></span>
+
+            <label for="mail">Votre Adresse Mail</label>
+            <input type="email" name="mail" id="mail" required placeholder="monemail@client.fr">
+            <span id="missMail"></span>
+
+            <input type="submit" value="Valider la commande" class="btn btn-dark" id="bouton-valider">
+          </form>
+        </div>
       </main>
 
     <script src="js/panier.js"></script>

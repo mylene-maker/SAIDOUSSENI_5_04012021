@@ -1,38 +1,38 @@
 ///// Recuperer le localStorage
 let panier = JSON.parse(localStorage.getItem('monPanier'))
-console.log(localStorage)
+console.log(panier)
 
-panier.map(function(element){
+
+///Tableau de presentation du panier 
+
+panier.forEach((element) => {
+    console.log(element)
     
-})
+    let basketElement = document.getElementById('basket-element')
+    let article = document.createElement('tr')
+    let ref = document.createElement('td')
+    ref.innerHTML = element._id
+    let nom = document.createElement('td')
+    nom.innerHTML = element.name
+    let prix = document.createElement('td')
+    prix.innerHTML = element.price/100 + ',00€'
 
-////Tableau de presentation du panier 
 
-let tableau = document.createElement('table')
-tableau.setAttribute('class', 'table')
-let thead = document.createElement('thead')
-thead.setAttribute('class', 'font-weight-bold')
-thead.innerHTML = 'Recapitulatif de votre commande'
-let ligne_1 = document.createElement('tr')
-let colone_1 = document.createElement('th')
-colone_1.innerHTML = 'Article'
-let colone_2 = document.createElement('th')
-colone_2.innerHTML = 'Nom'
-let colone_3 = document.createElement('th')
-colone_3.innerHTML = 'Prix'
-let tbody = document.createElement('tbody')
-tbody.setAttribute('id', 'cart-tablebody')
-let subtotal = document.createElement('p')
-subtotal.innerHTML = 'Total :' 
-let span = document.createElement('p')
-span.setAttribute('class', 'subtotal')
+    basketElement.appendChild(article)
+    article.appendChild(ref)
+    article.appendChild(nom)
+    article.appendChild(prix)
+
+  }); 
 
 ////////////Formulaire de commande
-
+/*
 const formulaire = document.getElementById('formulaire')
 
 let form = document.createElement('form')
 form.setAttribute('class', 'form')
+form.setAttribute('method', 'post')
+//form.setAttribute('action', '')
 
 let divFirstName = document.createElement('div')
 divFirstName.setAttribute('class', 'form-group')
@@ -97,16 +97,6 @@ button.setAttribute('class', 'btn btn-primary')
 button.setAttribute('id', 'confirm-command')
 
 
-formulaire.appendChild(tableau)
-tableau.appendChild(thead)
-thead.appendChild(ligne_1)
-ligne_1.appendChild(colone_1)
-ligne_1.appendChild(colone_2)
-ligne_1.appendChild(colone_3)
-tableau.appendChild(tbody)
-tableau.appendChild(subtotal)
-subtotal.appendChild(span)
-
 formulaire.appendChild(form)
 form.appendChild(divFirstName)
 divFirstName.appendChild(firstName)
@@ -128,4 +118,49 @@ form.appendChild(divMail)
 divMail.appendChild(mail)
 divMail.appendChild(inputMail)
 
-form.appendChild(button)
+form.appendChild(button) */
+
+
+//// Validation du formulaire 
+
+let formValid = document.getElementById('bouton-valider')
+let nom = document.getElementById('nom')
+let missNom = document.getElementById('missNom')
+let missPrenom = document.getElementById('missPrenom')
+let missAdresse = document.getElementById('missAdresse')
+let missVille = document.getElementById('missVille')
+let missMail = document.getElementById('missMail')
+
+formValid.addEventListener('click', validation)
+function validation(event){
+  /// si le champs Nom est vide
+  if(nom.validity.valueMissing){
+    event.preventDefault()
+    missNom.textContent =  'Veuillez indiquer votre nom de famille svp'
+    missNom.style.color = 'red'
+  } 
+  /// si le champ prénom est vide
+  if(prenom.validity.valueMissing){
+    event.preventDefault()
+    missPrenom.textContent =  'Veuillez indiquer votre prénom svp'
+    missPrenom.style.color = 'red'
+  }
+   /// si le champ adresse est vide
+   if(adresse.validity.valueMissing){
+    event.preventDefault()
+    missAdresse.textContent =  'Veuillez indiquer votre adresse svp'
+    missAdresse.style.color = 'red'
+  }
+   /// si le champ ville est vide
+   if(ville.validity.valueMissing){
+    event.preventDefault()
+    missVille.textContent =  'Veuillez indiquer votre ville et code postal svp'
+    missVille.style.color = 'red'
+  }
+   /// si le champ mail est vide
+   if(mail.validity.valueMissing){
+    event.preventDefault()
+    missMail.textContent =  'Veuillez indiquer votre mail de famille svp'
+    missMail.style.color = 'red'
+  }
+}
