@@ -68,14 +68,11 @@ select {
 
 .basket {
   width: 100%;
-  margin-left: 45px;
+  margin-left: 10px;
+  margin-bottom: 50px;
 }
 
 h4 {
   text-align: center;
-}
-
-table {
-  margin-bottom: 50px;
 }
 /*# sourceMappingURL=style.css.map */
