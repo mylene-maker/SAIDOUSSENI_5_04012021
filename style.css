@@ -57,6 +57,19 @@ select {
   margin-top: 20px;
 }
 
+@media only screen and (min-width: 768px) {
+  .btn-dark {
+    width: 35%;
+    margin-left: 65%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .btn-dark {
+    margin-top: -40px;
+  }
+}
+
 .title_price {
   display: -webkit-box;
   display: -ms-flexbox;

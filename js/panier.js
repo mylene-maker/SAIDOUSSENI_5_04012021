@@ -1,7 +1,7 @@
 ///// Recuperer le localStorage
 let panier = JSON.parse(localStorage.getItem('monPanier'))
 console.log(panier)
-
+let totalTmp = 0
 
 ///Tableau de presentation du panier 
 
@@ -22,13 +22,36 @@ panier.forEach((element) => {
     article.appendChild(ref)
     article.appendChild(nom)
     article.appendChild(prix)
-
+    
   }); 
 
-////////////Montant total panier
+  //// Total du panier 
+ 
+  panier.forEach(totalPrice => {
+    totalTmp += totalPrice.price
+  }) 
+  let total = document.getElementById('sum')
+  total.innerHTML = totalTmp/100 + '.00€'
+  console.log(totalTmp)
 
+// Variable des id produit à envoyer au serveur
 
+panier.forEach(commande =>{
+  var product = new Object()
+  product.id = commande._id
+  console.log(product)
+})
 
+// Variable contact à envoyer au serveur
+
+var contact = new Object()
+contact.nom = 
+contact.prenon = 
+contact.adresse = 
+contact.ville = 
+contact.mail = 
+
+console.log(contact)
 
 //// Validation du formulaire 
 
@@ -80,9 +103,8 @@ function validation(event){
   }
 }
 
-//// Envoi des données au serveur 
 
-fetch("http://localhost:3000/api/cameras/order",{
+/*fetch("http://localhost:3000/api/teddies/order",{
   body:JSON.stringify(order),
   method: "post",
   headers: { 'Content-Type': 'application/json;charset=UTF-8' },
@@ -93,4 +115,4 @@ fetch("http://localhost:3000/api/cameras/order",{
     //ouverture de la page de confirmation
     document.location = "commande.html";
   })
-})
+})*/
