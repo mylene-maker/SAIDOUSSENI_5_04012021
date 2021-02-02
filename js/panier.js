@@ -44,14 +44,21 @@ panier.forEach(commande =>{
 
 // Variable contact à envoyer au serveur
 
-var contact = new Object()
-contact.nom = 
-contact.prenon = 
-contact.adresse = 
-contact.ville = 
-contact.mail = 
+function contact(){
+let name1 = document.getElementById('nom').value;
+let surname = document.getElementById('prenom').value;
+let adress = document.getElementById('adresse').value;
+let city = document.getElementById('ville').value;
+let email = document.getElementById('mail').value;
 
-console.log(contact)
+/// sauvegarder dans une sessionStorage
+sessionStorage.setItem('nom', name1)
+sessionStorage.setItem('prenom', surname)
+sessionStorage.setItem('adresse', adress)
+sessionStorage.setItem('ville', city)
+sessionStorage.setItem('mail', email)
+}
+
 
 //// Validation du formulaire 
 
@@ -104,15 +111,7 @@ function validation(event){
 }
 
 
-/*fetch("http://localhost:3000/api/teddies/order",{
-  body:JSON.stringify(order),
-  method: "post",
-  headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-}) .then((response)=>{
-  response.json().then(function(data){
-    //enregistrement de "order" dans le localSorage
-    localStorage.setItem("order", JSON.stringify(data));
-    //ouverture de la page de confirmation
-    document.location = "commande.html";
-  })
-})*/
+/// envoi au serveur les objets contact et product
+
+fetch('http://localhost:3000/api/teddies/')
+

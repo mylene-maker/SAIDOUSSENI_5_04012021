@@ -16,7 +16,7 @@ if(localStorage.getItem('monPanier')){
   localStorage.setItem('monPanier', (JSON.stringify(init)))
 }
 
-//L'ajouter a l'url du fetch
+//L'ajouter l'id à l'url du fetch
 fetch(`${apiUrl}${productId}`)
 .then((response) => response.json())
 .then(function(data){
