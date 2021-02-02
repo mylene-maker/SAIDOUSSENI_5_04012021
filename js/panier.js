@@ -34,31 +34,6 @@ panier.forEach((element) => {
   total.innerHTML = totalTmp/100 + '.00€'
   console.log(totalTmp)
 
-// Variable des id produit à envoyer au serveur
-
-panier.forEach(commande =>{
-  var product = new Object()
-  product.id = commande._id
-  console.log(product)
-})
-
-// Variable contact à envoyer au serveur
-
-function contact(){
-let name1 = document.getElementById('nom').value;
-let surname = document.getElementById('prenom').value;
-let adress = document.getElementById('adresse').value;
-let city = document.getElementById('ville').value;
-let email = document.getElementById('mail').value;
-
-/// sauvegarder dans une sessionStorage
-sessionStorage.setItem('nom', name1)
-sessionStorage.setItem('prenom', surname)
-sessionStorage.setItem('adresse', adress)
-sessionStorage.setItem('ville', city)
-sessionStorage.setItem('mail', email)
-}
-
 
 //// Validation du formulaire 
 
@@ -72,18 +47,21 @@ let missVille = document.getElementById('missVille')
 let missMail = document.getElementById('missMail')
 
 formValid.addEventListener('click', validation)
-function validation(event){
+function validation(event){ 
+  let codeRetour = true;
   /// si le champs Nom est vide
   if(nom.validity.valueMissing){
     event.preventDefault()
     missNom.textContent =  'Veuillez indiquer votre nom de famille svp'
     missNom.style.color = 'red'
+    codeRetour = false;
   } 
   /// si le champ prénom est vide
   if(prenom.validity.valueMissing){
     event.preventDefault()
     missPrenom.textContent =  'Veuillez indiquer votre prénom svp'
     missPrenom.style.color = 'red'
+    codeRetour = false;
     
   } /* else if (prenomValid.test(prenon.value)== false){
     event.preventDefault()
@@ -95,23 +73,53 @@ function validation(event){
     event.preventDefault()
     missAdresse.textContent =  'Veuillez indiquer votre adresse svp'
     missAdresse.style.color = 'red'
+    codeRetour = false;
   }
    /// si le champ ville est vide
    if(ville.validity.valueMissing){
     event.preventDefault()
     missVille.textContent =  'Veuillez indiquer votre ville et code postal svp'
     missVille.style.color = 'red'
+    codeRetour = false;
   }
    /// si le champ mail est vide
    if(mail.validity.valueMissing){
     event.preventDefault()
     missMail.textContent =  'Veuillez indiquer votre mail svp'
     missMail.style.color = 'red'
+    codeRetour = false;
   }
+  return codeRetour;
 }
+const passerCommande = () => {
+  if(!validation()) {
+    return ; 
+  }
+
+// Variable contact à envoyer au serveur
+
+const contact = {
+   firstName: document.getElementById('nom').value,
+   lastName:  document.getElementById('prenom').value,
+   adress:    document.getElementById('adresse').value,
+   city:      document.getElementById('ville').value,
+   email:     document.getElementById('mail').value,
+};
+
+  // Variable des id produit à envoyer au serveur
+  const products = panier.filter((item) => item._id).map((item) => item._id);
 
 
-/// envoi au serveur les objets contact et product
-
-fetch('http://localhost:3000/api/teddies/')
-
+ // envoi au serveur les objets contact et product
+ fetch('http://localhost:3000/api/teddies/order', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    contact,
+    products,
+  })
+})
+.then((response) => response.json())
+}
