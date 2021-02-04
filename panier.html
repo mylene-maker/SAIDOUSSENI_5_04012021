@@ -20,13 +20,22 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light shadow fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="index.html"><img src="logo.png" width="100" alt="logo orinoco"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+          <a class="navbar-brand" href="index.html"
+            ><img src="logo.png" width="100" alt="logo orinoco"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              
               <li class="nav-item">
                 <a class="nav-link" href="panier.html">Panier</a>
               </li>
@@ -35,54 +44,89 @@
         </div>
       </nav>
     </header>
-      <main>
-        <h4>Votre panier contient les articles suivants :</h4>
+    <main>
+      <h4>Votre panier contient les articles suivants :</h4>
 
-        <table class="basket">
-          <thead>
-            <tr>
-              <th>Reference</th>
-              <th>Nom</th>
-              <th id="prix-unit">Prix</th>
-            </tr>  
-          </thead>
-          <tbody id="basket-element"> 
-          </tbody>
-          <tfoot>
-            <tr>
-              <th>Total</th>
-              <td></td>
-              <th id="sum"></th>
-            </tr>
-          </tfoot>
-        </table>
-        
-        <div class="container" id="formulaire">
-          <form method="post" onsubmit="passerCommande()">
-            <span id="missNom"></span>
-            <label for="nom">Votre Nom de famille</label>
-            <input type="text" name="nom" id="nom" required placeholder="DUPOND">
+      <table class="basket">
+        <thead>
+          <tr>
+            <th>Reference</th>
+            <th>Nom</th>
+            <th id="prix-unit">Prix</th>
+          </tr>
+        </thead>
+        <tbody id="basket-element"></tbody>
+        <tfoot>
+          <tr>
+            <th>Total</th>
+            <td></td>
+            <th id="sum"></th>
+          </tr>
+        </tfoot>
+      </table>
 
-            <span id="missPrenom"></span>
-            <label for="prenom">Votre prénom</label>
-            <input type="text" name="prenom" id="prenom" required placeholder="Julien">
+      <div class="container" id="formulaire">
+        <form method="post">
+          <span id="missNom"></span>
+          <label for="nom">Votre Nom de famille</label>
+          <input
+            type="text"
+            name="nom"
+            id="nom"
+            required
+            placeholder="DUPOND"
+          />
 
-            <span id="missAdresse"></span>
-            <label for="adresse">Votre Adresse</label>
-            <input type="text" name="adresse" id="adresse" required placeholder="102 rue de l'est">
+          <span id="missPrenom"></span>
+          <label for="prenom">Votre prénom</label>
+          <input
+            type="text"
+            name="prenom"
+            id="prenom"
+            required
+            placeholder="Julien"
+          />
 
-            <span id="missVille"></span>
-            <label for="ville">Votre Ville et Code Postal</label>
-            <input type="text" name="ville" id="ville" required placeholder="CHERBOURG - 97000"> 
+          <span id="missAdresse"></span>
+          <label for="adresse">Votre Adresse</label>
+          <input
+            type="text"
+            name="adresse"
+            id="adresse"
+            required
+            placeholder="102 rue de l'est"
+          />
 
-            <span id="missMail"></span>
-            <label for="mail">Votre Adresse Mail</label>
-            <input type="email" name="mail" id="mail" required placeholder="monemail@client.fr">
+          <span id="missVille"></span>
+          <label for="ville">Votre Ville et Code Postal</label>
+          <input
+            type="text"
+            name="ville"
+            id="ville"
+            required
+            placeholder="CHERBOURG - 97000"
+          />
 
-            <input type="submit" value="Valider la commande" class="btn btn-dark" id="bouton-valider">
-          </form>
-        </div>
-      </main>
+          <span id="missMail"></span>
+          <label for="mail">Votre Adresse Mail</label>
+          <input
+            type="email"
+            name="mail"
+            id="mail"
+            required
+            placeholder="monemail@client.fr"
+          />
+
+          <input
+            type="button"
+            value="Valider la commande"
+            class="btn btn-dark"
+            id="bouton-valider"
+          />
+        </form>
+        <p id="erreur"></p>
+      </div>
+    </main>
 
     <script src="js/panier.js"></script>
   </body>

@@ -1,53 +1,50 @@
-  //////////// Récupéretaionn des données avec fetch
- 
-fetch('http://localhost:3000/api/teddies/')
-      .then((response) => response.json())
-      .then(function(data){
-        console.log(data)
-        let teddies = data
+//////////// Récupéretaionn des données avec fetch
 
-        ////////Création des éléments du DOM avec une boucle pour l'affichage des 5 produits
+fetch("http://localhost:3000/api/teddies/")
+  .then((response) => response.json())
+  .then(function (data) {
+    console.log(data);
+    let teddies = data;
 
-          return teddies.map(function(teddy){
-          const teddiesElement = document.getElementById('teddies');
+    ////////Création des éléments du DOM avec une boucle pour l'affichage des 5 produits
 
-          let div = document.createElement('div')
-          div.setAttribute("class","col-lg-6 mb-4")
+    return teddies.map(function (teddy) {
+      const teddiesElement = document.getElementById("teddies");
 
-          let span = document.createElement('span')
-          span.setAttribute("class", "card h-100")
+      let div = document.createElement("div");
+      div.setAttribute("class", "col-lg-6 mb-4");
 
-          let a = document.createElement('a')
-          a.setAttribute("href", "produit.html?id=" + teddy._id)
+      let span = document.createElement("span");
+      span.setAttribute("class", "card h-100");
 
-          let title_price = document.createElement('div')
-          title_price.setAttribute('class', 'title_price')
+      let a = document.createElement("a");
+      a.setAttribute("href", "produit.html?id=" + teddy._id);
 
-          let title = document.createElement('h4')
-          title.innerHTML = teddy.name
+      let title_price = document.createElement("div");
+      title_price.setAttribute("class", "title_price");
 
-          let price = document.createElement('p')
-          price.innerHTML = teddy.price/100 + '.00 €'
-          price.setAttribute('class', 'font-weight-bold')
+      let title = document.createElement("h4");
+      title.innerHTML = teddy.name;
 
-          let img = document.createElement('img')
-          img.setAttribute("src",  teddy.imageUrl ) 
-          img.setAttribute("alt", teddy.name)
+      let price = document.createElement("p");
+      price.innerHTML = teddy.price / 100 + ".00 €";
+      price.setAttribute("class", "font-weight-bold");
 
-          let paragraph = document.createElement('p')
-          paragraph.setAttribute("class", "card-text")
-          paragraph.innerHTML = teddy.description
-          
-          div.appendChild(a)
-          a.appendChild(span)
-          span.appendChild(title_price)
-          title_price.appendChild(title)
-          span.appendChild(img)
-          title_price.appendChild(price)
-          span.appendChild(paragraph)
-          teddiesElement.appendChild(div)
-          
-          })
-      });
+      let img = document.createElement("img");
+      img.setAttribute("src", teddy.imageUrl);
+      img.setAttribute("alt", teddy.name);
 
+      let paragraph = document.createElement("p");
+      paragraph.setAttribute("class", "card-text");
+      paragraph.innerHTML = teddy.description;
 
+      div.appendChild(a);
+      a.appendChild(span);
+      span.appendChild(title_price);
+      title_price.appendChild(title);
+      span.appendChild(img);
+      title_price.appendChild(price);
+      span.appendChild(paragraph);
+      teddiesElement.appendChild(div);
+    });
+  });
