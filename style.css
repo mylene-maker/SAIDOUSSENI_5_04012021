@@ -100,4 +100,9 @@ select {
 h4 {
   text-align: center;
 }
+
+#erreur {
+  color: red;
+  font-weight: bold;
+}
 /*# sourceMappingURL=style.css.map */
