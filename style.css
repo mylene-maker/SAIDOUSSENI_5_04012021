@@ -105,4 +105,8 @@ h4 {
   color: red;
   font-weight: bold;
 }
+
+input:invalid {
+  border: red solid 1px;
+}
 /*# sourceMappingURL=style.css.map */
