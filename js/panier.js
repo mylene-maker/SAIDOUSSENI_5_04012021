@@ -86,10 +86,11 @@ envoiForm.addEventListener("click", function (e) {
         commande
       ),
     }).then(res => res.json())
-    .then (res => console.log(res.orderId))
-    /// enregistrer l'id dans le localStorage
-    localStorage.setItem('monId', res.orderId)
+    .then (res => {
+      console.log(res.orderId)
+      localStorage.setItem('monId', res.orderId)
+    })
+    document.location = 'commande.html'
 
-    //document.location = 'commande.html'
   }
 });
