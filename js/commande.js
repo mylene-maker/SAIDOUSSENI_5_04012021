@@ -1,3 +1,5 @@
+
+
 let confirmation = document.getElementById("confirmation");
 
 let message = document.createElement("p");
@@ -16,5 +18,5 @@ confirmation.appendChild(button);
 function idCommande() {
   let idCommande = document.getElementById("idCommande");
   let id = document.createElement("h1");
-  id.innerHTML;
+  id.innerHTML = 
 }

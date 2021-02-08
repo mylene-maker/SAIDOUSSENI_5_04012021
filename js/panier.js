@@ -40,21 +40,7 @@ let envoiForm = document.getElementById("bouton-valider");
 envoiForm.addEventListener("click", function (e) {
   let erreur;
   let inputs = document.getElementsByTagName("input");
-  if(inputs['nom'] != ""){
-    erreur = ''
-  }
-  if(inputs['prenom'] != ""){
-    erreur = ''
-  }
-  if(inputs['adresse'] != ""){
-    erreur = ''
-  }
-  if(inputs['ville'] != ""){
-    erreur = ''
-  }
-  if(inputs['mail'] != ""){
-    erreur = ''
-  }
+  
   for (var i = 0; i < inputs.length; i++) {
     if (!inputs[i].value) {
       erreur = "Veuillez renseigner tout les champs !";
@@ -84,25 +70,26 @@ envoiForm.addEventListener("click", function (e) {
       city: city,
       email: email,
     };
+    // Tableau des id produit à envoyer au serveur
+
     panier.forEach(articleId => 
       commande.products.push(articleId._id))
       console.log(commande)
 
-    // Tableau des id produit à envoyer au serveur
-    /*const products = panier.filter((item) => item._id).map((item) => item._id);
-    console.log(products);*/
-
-    //// Envoie au serveur de contact et product
-
     // envoi au serveur les objets contact et product
     fetch("http://localhost:3000/api/teddies/order", {
-      header: {
+      headers: {
         "Content-Type": "application/json",
       },
       method: "POST",
       body: JSON.stringify(
-        {commande}
+        commande
       ),
-    }).then(res => res.json());
+    }).then(res => res.json())
+    .then (res => console.log(res.orderId))
+    /// enregistrer l'id dans le localStorage
+    localStorage.setItem('monId', res.orderId)
+
+    //document.location = 'commande.html'
   }
 });

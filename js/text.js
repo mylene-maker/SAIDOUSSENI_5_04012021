@@ -10,7 +10,8 @@ fetch("http://localhost:3000/api/teddies/")
 
     return teddies.map(function (teddy) {
       const teddiesElement = document.getElementById("teddies");
-
+      console.log(teddy)
+      
       let div = document.createElement("div");
       div.setAttribute("class", "col-lg-6 mb-4");
 
