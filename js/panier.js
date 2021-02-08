@@ -60,6 +60,10 @@ envoiForm.addEventListener("click", function (e) {
       erreur = "Veuillez renseigner tout les champs !";
     }
   }
+  const commande = {
+    contact: {},
+    products: [],
+  }
   if (erreur) {
     e.preventDefault();
     document.getElementById("erreur").innerHTML = erreur;
@@ -73,31 +77,32 @@ envoiForm.addEventListener("click", function (e) {
 
     // Objet contact à envoyer au serveur
 
-    const contact = {
+    commande.contact = {
       firstName: firstName,
       lastName: lastName,
       address: address,
       city: city,
       email: email,
     };
-    console.log(contact);
+    panier.forEach(articleId => 
+      commande.products.push(articleId._id))
+      console.log(commande)
 
     // Tableau des id produit à envoyer au serveur
-    const products = panier.filter((item) => item._id).map((item) => item._id);
-    console.log(products);
+    /*const products = panier.filter((item) => item._id).map((item) => item._id);
+    console.log(products);*/
 
     //// Envoie au serveur de contact et product
 
     // envoi au serveur les objets contact et product
     fetch("http://localhost:3000/api/teddies/order", {
-      method: "POST",
       header: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        contact,
-        products,
-      }),
-    }).then((res) => res.json());
+      method: "POST",
+      body: JSON.stringify(
+        {commande}
+      ),
+    }).then(res => res.json());
   }
 });
