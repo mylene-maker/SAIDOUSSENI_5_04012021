@@ -16,11 +16,19 @@ panier.forEach((element) => {
   nom.innerHTML = element.name;
   let prix = document.createElement("td");
   prix.innerHTML = element.price / 100 + ",00€";
+  let iconDelete = document.createElement('i')
+  iconDelete.setAttribute('class', 'far fa-times-circle')
+  iconDelete.setAttribute('id', 'supprimer')
+  let linkDelete = document.createElement('a')
+  linkDelete.setAttribute('href', '#')
 
   basketElement.appendChild(article);
   article.appendChild(ref);
   article.appendChild(nom);
   article.appendChild(prix);
+  article.appendChild(linkDelete)
+  linkDelete.appendChild(iconDelete)
+
 });
 
 //// Total du panier
@@ -32,6 +40,13 @@ panier.forEach((totalPrice) => {
 let total = document.getElementById("sum");
 total.innerHTML = totalTmp / 100 + ".00€";
 console.log(totalTmp);
+
+/*// Retirer un produit du panier
+let supprimer = document.getElementById('supprimer')
+supprimer.addEventListener('click', function() {
+    localStorage.removeItem('monPanier')
+    document.location = "";
+})*/
 
 //// Verification des champs
 
@@ -89,8 +104,15 @@ envoiForm.addEventListener("click", function (e) {
     .then (res => {
       console.log(res.orderId)
       localStorage.setItem('monId', res.orderId)
-    })
-    document.location = 'commande.html'
 
+      if (res.orderId){
+        localStorage.setItem('monId', res.orderId)
+        document.location = 'commande.html'
+  
+      }else{
+        erreur = 'une erreur est survenue'
+      }
+    })
+    
   }
 });
