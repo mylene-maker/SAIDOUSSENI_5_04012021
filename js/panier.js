@@ -41,13 +41,6 @@ let total = document.getElementById("sum");
 total.innerHTML = totalTmp / 100 + ".00€";
 console.log(totalTmp);
 
-/*// Retirer un produit du panier
-let supprimer = document.getElementById('supprimer')
-supprimer.addEventListener('click', function() {
-    localStorage.removeItem('monPanier')
-    document.location = "";
-})*/
-
 //// Verification des champs
 
 let envoiForm = document.getElementById("bouton-valider");

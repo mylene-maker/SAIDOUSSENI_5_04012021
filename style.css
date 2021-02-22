@@ -109,4 +109,9 @@ h4 {
 input:invalid {
   border: red solid 1px;
 }
+
+main img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 /*# sourceMappingURL=style.css.map */

@@ -93,3 +93,8 @@ h4{
 input:invalid {
   border: red solid 1px;
 }
+main{
+  img{
+    object-fit: cover;
+  }
+}
