@@ -98,3 +98,11 @@ main{
     object-fit: cover;
   }
 }
+.list{
+  display: flex;
+  justify-content: space-between;
+  img{
+    width: 20%;
+    height: 20%;
+  }
+}

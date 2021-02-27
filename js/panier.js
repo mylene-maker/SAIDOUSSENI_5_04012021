@@ -33,7 +33,7 @@ panier.forEach((element) => {
 
 //// Total du panier
 
-panier.forEach((totalPrice) => {
+let totalPrice = panier.forEach((totalPrice) => {
   totalTmp += totalPrice.price;
 });
 
@@ -85,7 +85,7 @@ envoiForm.addEventListener("click", function (e) {
       console.log(commande)
 
     // envoi au serveur les objets contact et product
-    fetch("http://localhost:3000/api/teddies/order", {
+    let sendCommand = fetch("http://localhost:3000/api/teddies/order", {
       headers: {
         "Content-Type": "application/json",
       },
@@ -100,7 +100,7 @@ envoiForm.addEventListener("click", function (e) {
 
       if (res.orderId){
         localStorage.setItem('monId', res.orderId)
-        document.location = 'commande.html'
+        document.location = 'confirmation-commande.html'
   
       }else{
         erreur = 'une erreur est survenue'

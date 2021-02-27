@@ -1,6 +1,6 @@
 //////////// Récupéretaionn des données avec fetch
 
-fetch("http://localhost:3000/api/teddies/")
+let getTeddies = fetch("http://localhost:3000/api/teddies/")
   .then((response) => response.json())
   .then(function (data) {
     console.log(data);
