@@ -54,6 +54,7 @@ envoiForm.addEventListener("click", function (e) {
       erreur = "Veuillez renseigner tout les champs !";
     }
   }
+
   const commande = {
     contact: {},
     products: [],
