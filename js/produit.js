@@ -2,7 +2,7 @@
 let productId;
 productId = new URL(window.location.href).searchParams.get("id");
 //let apiUrl = "http://localhost:3000/api/teddies/";
-let apiUrl = "https://orinoco-oc-nodejs.herokuapp.com/api/teddies/"; // backend deployer sur heroku
+let apiUrl = "https://orinoco.herokuapp.com/api/teddies/"; // backend deployer sur heroku
 
 ///Creation du panier avec localStorage
 let panier = JSON.parse(localStorage.getItem("monPanier"));
