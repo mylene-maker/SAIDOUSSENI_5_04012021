@@ -87,7 +87,7 @@ envoiForm.addEventListener("click", function (e) {
 
     // envoi au serveur les objets contact et product
     //let sendCommand = fetch("http://localhost:3000/api/teddies/order", {
-      let sendCommand = fetch("https://orinoco-oc-nodejs.herokuapp.com/api/teddies/order", {
+      let sendCommand = fetch("https://orinoco.herokuapp.com/api/teddies/order", {
       headers: {
         "Content-Type": "application/json",
       },

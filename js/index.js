@@ -1,14 +1,11 @@
 //////////// Récupéretaionn des données avec fetch
 
 //let getTeddies = fetch("http://localhost:3000/api/teddies/")
-let getTeddies = fetch("https://orinoco.herokuapp.com/api/teddies/") // backend deployer sur heroku
+let getTeddies = fetch("https://orinoco.herokuapp.com/api/teddies/")  //backend deployer sur heroku
   .then((response) => response.json())
   .then(function (data) {
     console.log(data);
-    let teddies = data;
-
-    ////////Création des éléments du DOM avec une boucle pour l'affichage des 5 produits
-
+    let teddies = data; 
     return teddies.map(function (teddy) {
       const teddiesElement = document.getElementById("teddies");
       console.log(teddy)
