@@ -1,7 +1,7 @@
 //////////// Récupéretaionn des données avec fetch
 
 //let getTeddies = fetch("http://localhost:3000/api/teddies/")
-let getTeddies = fetch("https://orinoco-oc-nodejs.herokuapp.com/api/teddies") // backend deployer sur heroku
+let getTeddies = fetch("https://orinoco.herokuapp.com/api/teddies/") // backend deployer sur heroku
   .then((response) => response.json())
   .then(function (data) {
     console.log(data);
